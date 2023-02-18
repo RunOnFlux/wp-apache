@@ -125,11 +125,8 @@ define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
  *  - https://wordpress.org/support/article/faq-installation/#how-can-i-get-wordpress-working-when-im-behind-a-reverse-proxy
  *  - https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
  */
-if ( ! empty( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
-}
-if ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
-	$_SERVER['HTTPS'] = 'on';
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+  $_SERVER['HTTPS'] = 'on';
 }
 
 // (we include this by default because reverse proxying is extremely common in container environments)
