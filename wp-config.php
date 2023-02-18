@@ -118,6 +118,9 @@ define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
 // see also https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
  if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
 	 $_SERVER['HTTPS'] = 'on';
+ } else {
+   define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
+   define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
  }
 
 /**
