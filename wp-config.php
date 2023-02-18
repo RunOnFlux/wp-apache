@@ -134,7 +134,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
 if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 	// eval($configExtra);
 }
-// $_SERVER['HTTPS'] = 'on';
+$_SERVER['HTTPS'] = 'on';
 define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
 define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
 define( 'WP_AUTO_UPDATE_CORE', false );
