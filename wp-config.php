@@ -125,7 +125,7 @@ define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
  *  - https://wordpress.org/support/article/faq-installation/#how-can-i-get-wordpress-working-when-im-behind-a-reverse-proxy
  *  - https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
  */
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
   $_SERVER['HTTPS'] = 'on';
 }
 
